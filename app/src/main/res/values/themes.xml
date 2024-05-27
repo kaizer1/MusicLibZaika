@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MusicLib" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.MusicLib" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/blueDark</item>
+    </style>
+
+    <style name="Theme.SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/blueDark</item>
+        <item name="android:statusBarColor">@color/blueDark</item>
+    </style>
+
+
+
+</resources>
