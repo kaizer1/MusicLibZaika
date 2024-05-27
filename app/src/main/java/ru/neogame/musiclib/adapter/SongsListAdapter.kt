@@ -34,7 +34,7 @@ class SongsListAdapter(private  val songIdList : List<String>) :
                             )
                             .into(binding.songCoverImageView)
                         binding.root.setOnClickListener {
-                            MyExoplayer.startPlaying(binding.root.context,song)
+                            MyExoplayer.startPlaying(binding.root.context,song, songId)
                             it.context.startActivity(Intent(it.context,PlayerActivity::class.java))
                         }
                     }

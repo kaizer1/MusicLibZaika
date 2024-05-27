@@ -23,7 +23,11 @@ class SectionSongListAdapter(private  val songIdList : List<String>) :
             FirebaseFirestore.getInstance().collection("songs")
                 .document(songId).get()
                 .addOnSuccessListener {
+                    println(" get my firebase as!! ")
                     val song = it.toObject(SongModel::class.java)
+                    println(" my dslkjf = ${song!!.url}")
+
+
                     song?.apply {
                         binding.songTitleTextView.text = title
                         binding.songSubtitleTextView.text = subtitle

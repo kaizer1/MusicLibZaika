@@ -14,6 +14,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.firestore.firestoreSettings
+import com.google.firebase.firestore.memoryCacheSettings
+import com.google.firebase.firestore.persistentCacheSettings
 import ru.neogame.musiclib.databinding.ActivityPlayerBinding
 
 class PlayerActivity : AppCompatActivity() {
@@ -61,26 +65,18 @@ class PlayerActivity : AppCompatActivity() {
             //binding.playerView.setShowSubtitleButton(true)
             exoPlayer.addListener(playerListener)
 
-            val mediaSession = MediaSession.Builder(baseContext, exoPlayer!!).build()
+//            val mediaSession = MediaSession.Builder(baseContext, exoPlayer!!).build()
+//            mediaSession.player = exoPlayer
+
 
             binding.saveButton.setOnClickListener {
 
-               FirebaseFirestore.getInstance().collection("songs")
-                .document(MyExoplayer.getCurrentSongId()!!).get()
-                .addOnSuccessListener { it ->
-
-
-
-
-                }
-
-            }
+        }
 
 
             binding.iconArrowLeft.setOnClickListener {
                 super.onBackPressed()
             }
-
 
         }
     }

@@ -10,7 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.firestoreSettings
+import com.google.firebase.firestore.memoryCacheSettings
+import com.google.firebase.firestore.persistentCacheSettings
 import ru.neogame.musiclib.adapter.SectionSongListAdapter
 import ru.neogame.musiclib.databinding.ActivityMainBinding
 import ru.neogame.musiclib.models.SongModel
@@ -19,15 +25,13 @@ import ru.neogame.musiclib.models.SongModel
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+    //val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-        //getCategories()
 
         binding.swipeRefreshLayout.setOnRefreshListener {
             setupSection("secion_1",binding.section1RecyclerView)
@@ -36,7 +40,6 @@ class MainActivity : AppCompatActivity() {
 
 
         setupSection("secion_1",binding.section1RecyclerView)
-
 
     }
 
