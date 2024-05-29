@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MusicLib</string>
+    <string name="top_app_bar">Find Menu</string>
+    <string name="navigation_draw_open">Open</string>
+    <string name="navigation_draw_clo">Close</string>
+    <string name="menu_one">История</string>
+    <string name="menu_main">Главное меню</string>
 </resources>

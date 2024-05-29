@@ -1,6 +1,7 @@
 package ru.neogame.musiclib.adapter
 
 import android.content.Intent
+import android.media.browse.MediaBrowser.MediaItem
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -17,20 +18,23 @@ class SectionSongListAdapter(private  val songIdList : List<String>) :
     RecyclerView.Adapter<SectionSongListAdapter.MyViewHolder>() {
 
     class MyViewHolder(private val binding: SectionSongListRecyclerRowBinding) : RecyclerView.ViewHolder(binding.root){
-        //bind data with view
+
         fun bindData(songId : String){
+            println(" my numbers = ${songId.substring(5)}")
 
             FirebaseFirestore.getInstance().collection("songs")
                 .document(songId).get()
                 .addOnSuccessListener {
-                    println(" get my firebase as!! ")
-                    val song = it.toObject(SongModel::class.java)
-                    println(" my dslkjf = ${song!!.url}")
+                  val song = it.toObject(SongModel::class.java)
 
+                    if (song != null) {
+                        MyExoplayer.addMediaItem(songId.substring(5).toInt() , binding.root.context, song)
+                    }
 
                     song?.apply {
                         binding.songTitleTextView.text = title
                         binding.songSubtitleTextView.text = subtitle
+
                         Glide.with(binding.songCoverImageView).load(coverUrl)
                             .apply(
                                 RequestOptions().transform(RoundedCorners(32))
